@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Game styles */
+.game-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  padding: 1rem;
+  background: #14bdac;
+  flex-flow: row nowrap;
+}
+
+.game {
+  display: inline-block;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  color: white;
+  text-align: center;
+}
+
+.game .chalk-board > img {
+  width: 100%;
+}
+
+.game .overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+}
+
+.game .game-details {
+  margin-top: 8px;
+}
+
+.game .board-cells-list {
+  display: flex;
+  width: 150px;
+  margin: 8px auto 0 auto;
+  flex-flow: row wrap;
+}
+
+/* Board cell */
+.game .board-cells-list > li {
+  position: relative;
+  width: 33.333333%;
+  height: 50px;
+  border: 3px solid #0da192;
+}
+
+.game .board-cells-list > li.win {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Add hover effect on cell hover */
+.game .board-cells-list > li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+/* Remove hover effect if cell already clicked */
+.game .board-cells-list > li:hover.cross,
+.game .board-cells-list > li:hover.circle {
+  background: transparent;
+  cursor: default;
+}
+
+.game .board-cells-list > li:not(:nth-child(3n)) {
+  border-right: none;
+}
+
+.game .board-cells-list > li:nth-child(-n + 6) {
+  border-bottom: none;
+}
+
+.game .board-cells-list > li.cross::before,
+.game .board-cells-list > li.circle::before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.game .game-details .current-turn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.game .game-details .current-turn .cross::before,
+.game .game-details .current-turn .circle::before {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.game .board-cells-list > li.cross::before,
+.game .game-details .current-turn .cross::before {
+  color: lightgreen;
+  content: "X";
+}
+
+.game .board-cells-list > li.circle::before,
+.game .game-details .current-turn .circle::before {
+  color: red;
+  content: "O";
+}
+
+.current-turn {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+}
+
+.game-status {
+  margin: 16px 0 8px 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+}
+
+.game-status > span {
+  color: white;
+}
+
+.game-replay {
+  margin-top: 8px;
+}
+
+.game-replay > button {
+  display: none;
+}
+
+.game-replay > button.show {
+  display: inline-block;
+}
+
+.game-replay > button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: none;
+  margin-top: 4px;
+}
